@@ -3,26 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Public App</title>
+  <title>Public App Interface</title>
 </head>
 <body>
-  <h1>Welcome to My Custom App</h1>
+  <h1>Submit Something to My App</h1>
 
-  <button onclick="callMyScript()">Click to Call Script</button>
-  <p id="result"></p>
-
-  <script>
-    async function callMyScript() {
-      const responseBox = document.getElementById("result");
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbwSIt6XYCRd-6aKPt49kpYg8jhjRCzSQA05jK9D_VPmsO1LI1zzDi-pPdSno4KTJZ_A/exec");
-        const text = await res.text();
-        responseBox.textContent = text;
-      } catch (err) {
-        responseBox.textContent = "Something went wrong!";
-        console.error(err);
-      }
-    }
-  </script>
+  <form action="https://script.google.com/macros/s/AKfycbwXfQ1dtUtWt_9tZQIZIMKgqkwmRN8SnD-5rjA3yA8gECZYEC9-rR2mwbW3zGsw_JwC_w/exec" method="GET" target="_blank">
+    <input type="text" name="name" placeholder="Enter your name" required />
+    <button type="submit">Submit</button>
+  </form>
 </body>
 </html>
