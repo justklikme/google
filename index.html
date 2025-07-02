@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Public App</title>
 </head>
 <body>
-  <h2>Subscribe</h2>
-  <form id="myForm">
-    <input type="email" name="email" placeholder="Enter your email" required />
-    <button type="submit">Submit</button>
-  </form>
+  <h1>Welcome to My Custom App</h1>
 
-  <p id="response"></p>
+  <button onclick="callMyScript()">Click to Call Script</button>
+  <p id="result"></p>
 
   <script>
-    document.getElementById("myForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new URLSearchParams(new FormData(form));
-      const responseBox = document.getElementById("response");
-
+    async function callMyScript() {
+      const responseBox = document.getElementById("result");
       try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbwSIt6XYCRd-6aKPt49kpYg8jhjRCzSQA05jK9D_VPmsO1LI1zzDi-pPdSno4KTJZ_A/exec?" + data.toString());
+        const res = await fetch("https://script.google.com/macros/s/AKfycbwSIt6XYCRd-6aKPt49kpYg8jhjRCzSQA05jK9D_VPmsO1LI1zzDi-pPdSno4KTJZ_A/exec");
         const text = await res.text();
         responseBox.textContent = text;
       } catch (err) {
-        responseBox.textContent = "Something went wrong.";
+        responseBox.textContent = "Something went wrong!";
         console.error(err);
       }
-    });
+    }
   </script>
 </body>
 </html>
