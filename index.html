@@ -20,7 +20,7 @@
       const responseBox = document.getElementById("response");
 
       try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbwXfQ1dtUtWt_9tZQIZIMKgqkwmRN8SnD-5rjA3yA8gECZYEC9-rR2mwbW3zGsw_JwC_w/exec?" + data.toString());
+        const res = await fetch("https://script.google.com/macros/s/AKfycbwSIt6XYCRd-6aKPt49kpYg8jhjRCzSQA05jK9D_VPmsO1LI1zzDi-pPdSno4KTJZ_A/exec?" + data.toString());
         const text = await res.text();
         responseBox.textContent = text;
       } catch (err) {
