@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My App</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>This is my custom frontend hosted on GitHub Pages.</p>
-  </body>
+<head>
+  <title>My Public App</title>
+</head>
+<body>
+  <h2>Subscribe</h2>
+  <form id="myForm">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="response"></p>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new URLSearchParams(new FormData(form));
+      const responseBox = document.getElementById("response");
+
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbwXfQ1dtUtWt_9tZQIZIMKgqkwmRN8SnD-5rjA3yA8gECZYEC9-rR2mwbW3zGsw_JwC_w/exec?" + data.toString());
+        const text = await res.text();
+        responseBox.textContent = text;
+      } catch (err) {
+        responseBox.textContent = "Something went wrong.";
+        console.error(err);
+      }
+    });
+  </script>
+</body>
 </html>
